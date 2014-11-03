@@ -226,8 +226,6 @@ octosearch.controller = (function (w, d, undefined) {
             avatar.onload = function () {
                 avatar.addClass('loaded');
             };
-            // show welcome message
-            _showMessage();
             // check if there's a initial user request in URL
             _getFromURL();
         };
