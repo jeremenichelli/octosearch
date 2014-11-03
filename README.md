@@ -16,7 +16,7 @@ Just put a GitHub username inside the input box and press **SEARCH** and you'll 
 
  - **jabiru** to handle JSONP calls by Jeremias Menichelli
  - **classing** to manage classes in Dom Elements by Jeremias Menichelli
- - **rivets** for data binding by Michael Richards
+ - -**rivets**- **monster** for data binding by -Michael Richards- Jeremias Menichelli
  - **CSS3Pie** for pie chart building by Ali Bassam
  - **Bind** polyfill by MDN
 
