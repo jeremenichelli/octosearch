@@ -374,12 +374,22 @@ p {
 .card a:hover {
   text-shadow: 0 0 4px #adadad;
 }
-.user-avatar {
+.avatar-wrapper {
+  padding: 100% 0 0;
+  position: relative;
+  width: 100%;
+}
+.avatar-wrapper .user-avatar {
+  height: 100%;
+  left: 0;
   opacity: 0;
+  position: absolute;
+  top: 0;
   -webkit-transition: opacity .25s ease;
           transition: opacity .25s ease;
+  width: 100%;
 }
-.user-avatar.loaded {
+.avatar-wrapper .user-avatar.loaded {
   opacity: 1;
 }
 .user-extra-info {
@@ -408,7 +418,7 @@ p {
   float: left;
   font-size: 1.25em;
   list-style: none;
-  margin: 0 0 0 20px;
+  margin: 10px 0 0;
 }
 #languages .lang-info li {
   margin: 7px 0 0;
@@ -419,6 +429,7 @@ p {
 }
 #languages #lang-pie-chart {
   float: left;
+  margin: 0 20px 0 0;
 }
 .repo-extra-info {
   float: left;

@@ -60,22 +60,24 @@
                 <div id="user" class="column six card">
                     <h2>Profile</h2>
                     <div class="column five first">
-                        <img rv-src="user.avatar_url" rv-alt="user.name" class="user-avatar">
+                        <div class="avatar-wrapper">
+                            <img mns-attr-src="user.avatar_url" mns-attr-alt="user.name" class="user-avatar">
+                        </div>
                     </div>
                     <div class="column seven">
                         <div class="user-info">
-                            <p rv-text="user.name" class="user-name"></p>
-                            <p rv-text="user.login" class="user-login"></p>
-                            <p rv-text="user.location" class="user-location"></p>
-                            <a rv-text="user.blog" rv-href="user.blog" target="_blank" class="user-blog"></a>
-                            <p rv-text="user.email"></p>
+                            <p mns-text="user.name" class="user-name"></p>
+                            <p mns-text="user.login" class="user-login"></p>
+                            <p mns-text="user.location" class="user-location"></p>
+                            <a mns-text="user.blog" mns-attr-href="user.blog" target="_blank" class="user-blog"></a>
+                            <p mns-text="user.email"></p>
                         </div>
                         <div class="user-extra">
                             <p class="user-extra-info">
-                                <span rv-text="user.followers"></span> Followers
+                                <span mns-text="user.followers"></span> Followers
                             </p>
                             <p class="user-extra-info">
-                                <span rv-text="user.following"></span> Following
+                                <span mns-text="user.following"></span> Following
                             </p>
                         </div>
                     </div>
@@ -83,26 +85,26 @@
                 </div>
                 <div id="repos" class="column six card">
                     <h2>Repositories</h2>
-                    <ul class="repos-list">
-                        <li rv-each-repo="repos">
-                            <h3 rv-text="repo.name"></h3>
-                            <p rv-text="repo.description"></p>
+                    <ul class="repos-list" mns-each-repos="repo">
+                        <li>
+                            <h3 mns-text="repo.name"></h3>
+                            <p mns-text="repo.description"></p>
                             <a href="javascript:void(0)" class="more-info-button"></a>
                             <div class="expandable">
                                 <div class="arrow-up"></div>
                                 <p class="repo-extra-info">
-                                    <span rv-text="repo.stargazers_count"></span> Stars
+                                    <span mns-text="repo.stargazers_count"></span> Stars
                                 </p>
                                 <p class="repo-extra-info">
-                                    <span rv-text="repo.open_issues_count"></span> Issues
+                                    <span mns-text="repo.open_issues_count"></span> Issues
                                 </p>
                                 <p class="repo-extra-info">
-                                    <span rv-text="repo.watchers_count"></span> Watchers
+                                    <span mns-text="repo.watchers_count"></span> Watchers
                                 </p>
                                 <p class="repo-extra-info">
-                                    <span rv-text="repo.forks_count"></span> Forks
+                                    <span mns-text="repo.forks_count"></span> Forks
                                 </p>
-                                <a rv-href="repo.html_url" class="repo-link-button" target="_blank">See this repository in GitHub &gt;</a>
+                                <a mns-attr-href="repo.html_url" class="repo-link-button" target="_blank">See this repository in GitHub &gt;</a>
                             </div>
                         </li>
                     </ul>
@@ -114,6 +116,6 @@
         </div>
     </section>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <script src="assets/scripts/main.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
 </body>
 </html>

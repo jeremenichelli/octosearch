@@ -43,7 +43,8 @@ gulp.task('styles', ['styles:less'], function () {
 gulp.task('scripts:lint', function () {
     return gulp.src('src/scripts/octosearch.js')
         .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'));
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('scripts:concat', [ 'scripts:lint' ], function () {

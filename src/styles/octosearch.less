@@ -163,12 +163,23 @@ p {
     }
 }
 
-.user-avatar {
-    opacity: 0;
-    transition: opacity .25s ease;
+.avatar-wrapper {
+    padding: 100% 0 0;
+    position: relative;
+    width: 100%;
 
-    &.loaded {
-        opacity: 1;
+    .user-avatar {
+        height: 100%;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity .25s ease;
+        width: 100%;
+
+        &.loaded {
+            opacity: 1;
+        }
     }
 }
 
@@ -189,7 +200,7 @@ p {
         float: left;
         font-size: 1.25em;
         list-style: none;
-        margin: 0 0 0 20px;
+        margin: 10px 0 0;
 
         li {
             margin: 7px 0 0;
@@ -203,6 +214,7 @@ p {
 
     #lang-pie-chart {
         float: left;
+        margin: 0 20px 0 0;
     }
 }
 

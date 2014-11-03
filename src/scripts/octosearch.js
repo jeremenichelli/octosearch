@@ -7,7 +7,6 @@ octosearch.view = (function (d) {
     return {
         user: d.getElementById('user'),
         repos: d.getElementById('repos'),
-        reposTemplate: repos.innerHTML,
         languages: d.getElementById('languages'),
         message: {
             title: d.getElementById('message-title'),
@@ -45,9 +44,9 @@ octosearch.model = (function (w, d, undefined) {
 octosearch.controller = (function (w, d, undefined) {
     var searchInput = d.getElementById('search-input'),
         searchSubmit = d.getElementById('search-submit'),
-        mainPane = document.getElementById('main'),
-        messagePane = document.getElementById('message'),
-        avatar = document.querySelector('.user-avatar');
+        mainPane = d.getElementById('main'),
+        messagePane = d.getElementById('message'),
+        avatar = d.querySelector('.user-avatar');
 
     var _hideMessage = function () {
         messagePane.removeClass('show-message');
@@ -100,13 +99,13 @@ octosearch.controller = (function (w, d, undefined) {
     // resolve user reponse data
     var _resolveUser = function (response) {
         if (response.meta.status === 200) {
-            rivets.bind(octosearch.view.user, {
-                user: response.data
-            });
-            var usr = response.data.login;
-            octosearch.model.getRepositories(usr, _resolveRepositories);
+            monster.view(octosearch.view.user, {
+                    model: response.data,
+                    context: 'user'
+                });
+            octosearch.model.getRepositories(response.data.login, _resolveRepositories);
             if ('history' in w) {
-                w.history.pushState(usr, 'OctoSearch // ' + usr, '?' + usr);
+                w.history.pushState(response.data.login, 'OctoSearch // ' + response.data.login, '?' + response.data.login);
             }
         } else if (response.meta.status === 404) {
             _setMessage('error', 'User Not Found', 
@@ -124,10 +123,9 @@ octosearch.controller = (function (w, d, undefined) {
                 d.querySelector('.repos-list').style.display = 'none';
                 d.getElementById('no-repositories-message').style.display = 'block';
             } else {
-                // hack because rivets unbinds rv-each iteration templates
-                octosearch.view.repos.innerHTML = octosearch.view.reposTemplate;
-                rivets.bind(octosearch.view.repos, {
-                    repos: response.data
+                monster.view(octosearch.view.repos, {
+                    model: response.data,
+                    context: 'repos'
                 });
                 //bind more info button events
                 var expandables = octosearch.view.repos.querySelectorAll('.more-info-button');
