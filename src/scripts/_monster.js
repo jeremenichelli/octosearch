@@ -59,7 +59,7 @@
             prop = obj;
 
         for (var i = 0, len = props.length; i < len; i++) {
-            if (typeof prop[props[i]] !== 'undefined') {
+            if (typeof prop[props[i]] !== 'undefined' && prop[props[i]] !== null) {
                 prop = prop[props[i]];
             } else {
                 prop = '';

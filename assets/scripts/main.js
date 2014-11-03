@@ -377,7 +377,7 @@ function createPie (pieName, pieSize, baseColor, numberOfSlices, percentages, co
             prop = obj;
 
         for (var i = 0, len = props.length; i < len; i++) {
-            if (typeof prop[props[i]] !== 'undefined') {
+            if (typeof prop[props[i]] !== 'undefined' && prop[props[i]] !== null) {
                 prop = prop[props[i]];
             } else {
                 prop = '';
