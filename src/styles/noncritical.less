@@ -1,0 +1,190 @@
+// common resources
+@import '__mixins.less';
+@import '__variables.less';
+
+/* --- NON CRITICAL STYLES --- */
+strong {
+    font-weight: 400;
+}
+
+a {
+    color: @main-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    clear: both;
+}
+
+h2 {
+
+    + h3 {
+        margin-top: 20px;
+    }
+}
+
+h3 {
+
+    + h4 {
+        margin-top: 20px;
+    }
+}
+
+.card {
+    background-color: @background-color--light;
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    padding: 20px;
+
+    &-title {
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0 0 30px;
+        text-transform: uppercase;
+    }
+}
+
+#user {
+    min-height: 245px;
+}
+
+.user-name {
+    font-size: 32px;
+    letter-spacing: -.03em;
+    line-height: 1.1em;
+    margin: 0;
+}
+
+.user-login {
+    line-height: 1.1em;
+    margin: 0;
+}
+
+.user-avatar {
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.user-blog{
+    display: block;
+    margin: 10px 0 0;
+}
+
+.user-extra-info {
+    text-transform: uppercase;
+
+    span {
+        font-weight: 400;
+    }
+
+    + .user-extra-info {
+        margin: 3px 0 0;
+    }
+}
+
+.repos-list,
+.repo-forked {
+    display: none;
+}
+
+.repos-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-width: 0 0 1px;
+        border-style: solid;
+        border-color: @background-color--medium;
+        margin: 0 0 20px;
+        padding: 0 0 20px;
+    }
+
+    a {
+        background-color: @main-color;
+        color: @text-color--light;
+        display: inline-block;
+        font-weight: 300;
+        margin: 7px 0 0;
+        padding: 7px 12px;
+        text-transform: uppercase;
+    }
+}
+
+.repo-forked {
+    background-color: @background-color--medium;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 1.25em;
+    padding: 3px 7px;
+    text-transform: uppercase;
+}
+
+.repo-name {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.repo-description {
+    margin: 10px 0 0;
+}
+
+.no-repos-msge {
+    margin: 0;
+}
+
+#stats {
+    margin: 45px 0 0;
+}
+
+.langs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        color: @main-color;
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.5em;
+    }
+
+    p {
+        margin-top: 12px;
+    }
+
+    a {
+        background-color: @main-color;
+        color: @text-color--light;
+        display: inline-block;
+        font-weight: 300;
+        margin: 7px 0 0;
+        padding: 7px 12px;
+        text-transform: uppercase;
+    }
+}
+
+.lang-percent {
+    font-weight: 300;
+}
+
+.lang-bar {
+    background-color: @main-color;
+    height: 30px;
+    transition: width .65s ease-in-out .5s;
+}
+
+.hide-bars {
+
+    .lang-bar {
+        width: 0 !important;
+    }
+}
+
+.error {
+    color: @error-color;
+}
+
+/* --- NON CRITICAL MOBILE STYLES --- */
+@media screen and (max-width: 769px) {
+
+}

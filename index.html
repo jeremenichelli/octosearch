@@ -1,121 +1,84 @@
-<!DOCTYPE html>
-<!--[if lt IE 9 ]> <html class="lt-ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html> <!--<![endif]-->
-<head>
-    <meta charset="UTF-8">
-    <title>OctoSearch</title>
-    <meta name="author" content="Jeremias Menichelli">
-    <meta name="description" content="Single Page App to look up information about GitHub users">
-    <meta name="keywords" content="github, users, web app">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+---
+layout: default
+---
+<section class="message">
+    <div class="row">
+        <div class="column column-6">
+            <h2 id="message-title">Welcome to OctoSearch</h2>
+            <p id="message-body">Write a user name in the search box and submit!</p>
+        </div>
+    </div>
+</section>
 
-    <link rel="stylesheet" href="assets/styles/main.min.css">
-    <!--[if lt IE 9]>
-        <script>
-            /* HTML5 Shiv v3.7.0 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed */
-            (function(l,f){function m(){var a=e.elements;return"string"==typeof a?a.split(" "):a}function i(a){var b=n[a[o]];b||(b={},h++,a[o]=h,n[h]=b);return b}function p(a,b,c){b||(b=f);if(g)return b.createElement(a);c||(c=i(b));b=c.cache[a]?c.cache[a].cloneNode():r.test(a)?(c.cache[a]=c.createElem(a)).cloneNode():c.createElem(a);return b.canHaveChildren&&!s.test(a)?c.frag.appendChild(b):b}function t(a,b){if(!b.cache)b.cache={},b.createElem=a.createElement,b.createFrag=a.createDocumentFragment,b.frag=b.createFrag();
-            a.createElement=function(c){return!e.shivMethods?b.createElem(c):p(c,a,b)};a.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+m().join().replace(/[\w\-]+/g,function(a){b.createElem(a);b.frag.createElement(a);return'c("'+a+'")'})+");return n}")(e,b.frag)}function q(a){a||(a=f);var b=i(a);if(e.shivCSS&&!j&&!b.hasCSS){var c,d=a;c=d.createElement("p");d=d.getElementsByTagName("head")[0]||d.documentElement;c.innerHTML="x<style>article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}</style>";
-            c=d.insertBefore(c.lastChild,d.firstChild);b.hasCSS=!!c}g||t(a,b);return a}var k=l.html5||{},s=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,r=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,j,o="_html5shiv",h=0,n={},g;(function(){try{var a=f.createElement("a");a.innerHTML="<xyz></xyz>";j="hidden"in a;var b;if(!(b=1==a.childNodes.length)){f.createElement("a");var c=f.createDocumentFragment();b="undefined"==typeof c.cloneNode||
-            "undefined"==typeof c.createDocumentFragment||"undefined"==typeof c.createElement}g=b}catch(d){g=j=!0}})();var e={elements:k.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video",version:"3.7.0",shivCSS:!1!==k.shivCSS,supportsUnknownElements:g,shivMethods:!1!==k.shivMethods,type:"default",shivDocument:q,createElement:p,createDocumentFragment:function(a,b){a||(a=f);
-            if(g)return a.createDocumentFragment();for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElement(e[d]);return c}};l.html5=e;q(f)})(this,document);
-        </script>
-    <![endif]-->
-</head>
-<body>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="column three">
-                    <img src="assets/images/logo.gif" alt="logo" height="65" class="octo-logo">
-                    <h1 class="page-name">OctoSearch</h1>
-                    <p class="page-slogan">get info of GitHub users</p>           
-                </div>
-                <div class="column six">
-                    <form action="" class="search-form">
-                        <input type="text" id="search-input" placeholder="username">
-                        <input type="submit" id="search-submit" value="Search">
-                    </form>
-                </div>
-                <div class="column three">
-                    <a href="https://jeremenichelli.github.io" target="_blank" id="about-link">by Jeremias Menichelli</a>
+<section id="view">
+    <div class="row">
+        <div class="column column-3">
+            <div id="user">
+                <!-- user info placeholder -->
+            </div>
+            <div id="stats"></div>
+        </div>
+        <div class="column column-3">
+            <div id="repos">
+                <!-- repos info placeholder -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<template class="user-template">
+    <div class="card">
+        <h2 class="card-title">Profile</h2>
+        <div class="inner-row">
+            <div class="column column-2">
+                <img class="user-avatar" mns-attr-src="user.avatar_url" mns-attr-alt="user.name"
+                    onload="this.style.opacity = 1;">
+            </div>
+            <div class="column column-4">
+                <p mns-text="user.name" class="user-name"></p>
+                <p mns-text="user.login" class="user-login"></p>
+                <a mns-text="user.blog" mns-attr-href="user.blog" target="_blank" class="user-blog"></a>
+                <div class="user-extra">
+                    <p class="user-extra-info">
+                        <span mns-text="user.followers"></span> Followers
+                    </p>
+                    <p class="user-extra-info">
+                        <span mns-text="user.following"></span> Following
+                    </p>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</template>
 
-    <section id="message" class="show-message">
-        <div class="container">
-            <div class="row">
-                <div class="column twelve">
-                    <h2 id="message-title">Welcome to OctoSearch!</h2>
-                    <p id="message-content">Insert a user name in the search bar and press SEARCH to start.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<template class="repos-template">
+    <div class="card">
+        <h2 class="card-title">Repositories</h2>
+        <p class="no-repos-msge" mns-hide="repos.length">User has not created repositories yet</p>
+        <ul class="repos-list" mns-each-repo="repos" mns-show="repos.length">
+            <li>
+                <p class="repo-name">
+                    <span mns-text="repo.name"></span>
+                    <span mns-showinline="repo.fork" class="repo-forked">fork</span>
+                </p>
+                <p mns-text="repo.description" class="repo-description"></p>
+                <a mns-attr-href="repo.html_url" target="_blank">See it on GitHub</a>
+            </li>
+        </ul>
+    </div>
+</template>
 
-    <section id="main">
-        <div class="container">
-            <div class="row">
-                <div id="user" class="column six card">
-                    <h2>Profile</h2>
-                    <div class="column five first">
-                        <div class="avatar-wrapper">
-                            <img mns-attr-src="user.avatar_url" mns-attr-alt="user.name" class="user-avatar">
-                        </div>
-                    </div>
-                    <div class="column seven">
-                        <div class="user-info">
-                            <p mns-text="user.name" class="user-name"></p>
-                            <p mns-text="user.login" class="user-login"></p>
-                            <p mns-text="user.location" class="user-location"></p>
-                            <a mns-text="user.blog" mns-attr-href="user.blog" target="_blank" class="user-blog"></a>
-                            <p mns-text="user.email"></p>
-                        </div>
-                        <div class="user-extra">
-                            <p class="user-extra-info">
-                                <span mns-text="user.followers"></span> Followers
-                            </p>
-                            <p class="user-extra-info">
-                                <span mns-text="user.following"></span> Following
-                            </p>
-                        </div>
-                    </div>
-                    <div id="languages"></div>
-                </div>
-                <div id="repos" class="column six card">
-                    <h2>Repositories</h2>
-                    <ul class="repos-list" mns-each-repos="repo">
-                        <li>
-                            <h3 mns-text="repo.name"></h3>
-                            <p mns-text="repo.description"></p>
-                            <a href="javascript:void(0)" class="more-info-button"></a>
-                            <div class="expandable">
-                                <div class="arrow-up"></div>
-                                <p class="repo-extra-info">
-                                    <span mns-text="repo.stargazers_count"></span> Stars
-                                </p>
-                                <p class="repo-extra-info">
-                                    <span mns-text="repo.open_issues_count"></span> Issues
-                                </p>
-                                <p class="repo-extra-info">
-                                    <span mns-text="repo.watchers_count"></span> Watchers
-                                </p>
-                                <p class="repo-extra-info">
-                                    <span mns-text="repo.forks_count"></span> Forks
-                                </p>
-                                <a mns-attr-href="repo.html_url" class="repo-link-button" target="_blank">See this repository in GitHub &gt;</a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div id="no-repositories-message">
-                        <p>This user has not created repositories yet.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-    <script src="assets/scripts/main.min.js"></script>
-</body>
-</html>
+<template class="stats-template">
+    <div class="card hide-bars">
+        <h2 class="card-title">Stats</h2>
+        <ul class="langs-list" mns-each-lang="stats">
+            <li>
+                <p>
+                    <span class="lang-name" mns-text="lang.name"></span>
+                    <span class="lang-percent" mns-percent="lang.frequency"></span>
+                </p>
+                <div class="lang-bar" mns-width="lang.frequency"></div>
+            </li>
+        </ul>
+    </div>
+</template>

@@ -1,0 +1,14 @@
+<header {% if page.type %}class="{{ page.type }}--header"{% endif %}>
+    <div class="row">
+        <div class="column column-3">
+            <h1>Octosearch</h1>
+        </div>
+
+        <div class="column column-3">
+            <form id="search-form" action="?">
+                <input id="search-input" type="text">
+                <input id="search-submit" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+</header>

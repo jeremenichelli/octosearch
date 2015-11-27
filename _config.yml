@@ -1,0 +1,11 @@
+# site settings
+title: OctoSearch| Jeremias Menichelli
+author: Jeremias Menichelli
+description: "App to search and visualize GitHub users profiles."
+url: "http://jeremenichelli.github.io/octosearch"
+baseurl: /octosearch
+
+# build settings
+port: 5000
+highlighter: pygments
+markdown: redcarpet
