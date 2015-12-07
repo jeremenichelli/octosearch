@@ -144,18 +144,18 @@
                                     stats.Others.name = 'Others';
                                     delete stats['null'];
                                 }
+
+                                // generate stats view
+                                var statsContent = cloneTemplate('stats');
+                                mnster.view(statsContent, { context: 'stats', model: stats });
+
+                                views.stats.appendChild(statsContent);
+
+                                // reveal bars percentage
+                                setTimeout(function() {
+                                    views.stats.querySelector('.hide-bars').classList.remove('hide-bars');
+                                }, 1);
                             }
-
-                            // generate stats view
-                            var statsContent = cloneTemplate('stats');
-                            mnster.view(statsContent, { context: 'stats', model: stats });
-
-                            views.stats.appendChild(statsContent);
-
-                            // reveal bars percentage
-                            setTimeout(function() {
-                                views.stats.querySelector('.hide-bars').classList.remove('hide-bars');
-                            }, 0);
                             
                             // push state
                             _win.history.pushState(user, 'OctoSearch | ' + user, '?' + user);
